@@ -36,6 +36,7 @@ change_log = "CHANGELOG.md"
 upload_to_repository = false
 upload_to_release = false
 build_command = "hatch build"
+version_source = "tag"
 
 [tool.hatch.version]
 path = "pydal_limbo/__about__.py"
