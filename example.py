@@ -1,15 +1,10 @@
 from pydal import DAL
 
 # noinspection PyUnresolvedReferences
-# import is required, even though pacakge is not used, to set up rqlite:// for pyDAL
-import pydal_rqlite
+# import is required, even though pacakge is not used, to set up limbo:// for pyDAL
+import pydal_limbo
 
-# db = DAL("rqlite://user:pass@localhost:4001", folder="database", driver_args={'https': False})
-db = DAL("rqlite://localhost", folder="database")
-# or with basic auth/custom port/https:
-# db = DAL("rqlite://user:pass@localhost:4001", folder="database", driver_args={'https': True})
-# db now works similarly to sqlite:
-# db = DAL("sqlite://:memory:", folder="database")
+db = DAL("limbo://localhost", folder="database")
 
 db.define_table(
     "person",
@@ -21,10 +16,13 @@ db.define_table(
 
 db.commit()
 
-db.person.truncate()
+# db.person.truncate()
 
-db.person.insert(name="Henk", age=33)
+rowid = db.person.insert(name="Henk", age=33)
+assert rowid == 1
 
-print(
-    db(db.person.name == "Henk").select().as_list()
-)
+print(rowid, db(db.person.name == "Henk").select().as_list())
+
+db.commit()
+
+input("hi")
