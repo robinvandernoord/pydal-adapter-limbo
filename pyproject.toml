@@ -12,7 +12,7 @@ license-expression = "MIT"
 authors = [
     {name = "Robin van der Noord", email = "robin.vdn@educationwarehouse.nl"}
 ]
-urls = { "Homepage" = "https://github.com/educationwarehouse/pydal-adapter-limbo" }
+urls = { "Homepage" = "https://github.com/robinvandernoord/pydal-adapter-limbo" }
 
 dependencies = [
     "pydal",
